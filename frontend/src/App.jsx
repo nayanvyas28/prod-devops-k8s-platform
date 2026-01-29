@@ -27,6 +27,20 @@ function App() {
 
   return (
     <div className="App">
+      <style>{`
+        *, *::before, *::after {
+          box-sizing: border-box;
+        }
+        body {
+          display: block;
+          max-width: 100%;
+          place-items: unset;
+        }
+        /* Ensure inputs don't overflow their grid cells */
+        .form-group input, .form-group select {
+           max-width: 100%;
+        }
+      `}</style>
       <header className="App-header">
         <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
           <LayoutDashboard size={28} className="text-primary" style={{ color: 'var(--primary)' }} />
