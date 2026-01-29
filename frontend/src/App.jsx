@@ -9,17 +9,17 @@ function App() {
   const [servers, setServers] = useState([]);
 
   useEffect(() => {
+    const fetchServers = async () => {
+      try {
+        const response = await api.get('/servers/');
+        setServers(response.data);
+      } catch (error) {
+        console.error("Error fetching servers:", error);
+      }
+    };
+
     fetchServers();
   }, []);
-
-  const fetchServers = async () => {
-    try {
-      const response = await api.get('/servers/');
-      setServers(response.data);
-    } catch (error) {
-      console.error("Error fetching servers:", error);
-    }
-  };
 
   const handleServerAdded = (newServer) => {
     setServers([...servers, newServer]);
